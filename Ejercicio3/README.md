@@ -171,6 +171,7 @@ public class Game {
 }
 ```
 
+En HintGenerator haremos esta modificacion:
 ![](img/tdd1_game_good.png)
 
 
@@ -202,6 +203,8 @@ public class HintGenerator implements IHintGenerator {
 
 ![](img/tdd1_hint_good.png)
 
+En WordSelector haremos esta modificacion:
+
 ```java
 public class WordSelector implements IWordSelector {
     String[] possibleWords;
@@ -223,7 +226,7 @@ public class WordSelector implements IWordSelector {
 Ahora se puede ver que las pruebas pasan.
 
 
-###Metricas de Codigo:
+### Metricas de Codigo:
 
 **Analisis de cobertura:**
 
@@ -384,7 +387,7 @@ public class Game {
 
 Aqui se ve que las pruebas estan en rojo, en la clase Game:
 
-![](img/tdd2_game_red.png)
+![](img/tdd2_game_bad.png)
 
 Para la clase WordSelector:
 
@@ -468,8 +471,9 @@ public class HintGenerator implements IHintGenerator {
 
 ![](img/tdd2_hint_good.png)
 
+Una vez puesta la logica se ve que las pruebas pasan
 
-###Metricas de Codigo:
+### Metricas de Codigo:
 
 **Analisis de cobertura:**
 
@@ -495,19 +499,19 @@ En WordSelector y FeedbackGenerator el LCOM4 = 1
 
 *CAMC = [sumatorio de tipos de parámetros únicos utilizados por todos los métodos] /[número total de métodos× número máximo de parámetros por método.]*
 
-- Para la clase Game:
+Para la clase Game:
 
 Los metodos son: start(selectWordIndex), tryToGuessLetter(String tryString), getDoYouWon(), setDoYouWon(boolean doYouWon), setIntents(int newIntents), getRemainingAttempts(), getMaximumAttempts(), getWordToGuess(), winningAdvice()
 
 CAMC = 4/9*1 = 0.44
 
-- Para la clase WordSelector:
+Para la clase WordSelector:
 
 selectWord(selectedWordIndex)
 
 CAMC = 1/1*1 = 1
 
-- Para la clase HintGenerator:
+Para la clase HintGenerator:
 
 generateInitialHint(), generateHint(String tryWord)
 
@@ -660,6 +664,8 @@ public class Game {
 }
 ```
 
+<span style="color:green;">2.y 3. GREEN y REFACTOR</span>
+
 Desde el Sprint1 se implemento la inyección de dependencias para las clases WordSelector y HintGenerator. (Ejercicio 1)
 
 Lo que corresponde es implementar un contenedor de inyección de dependencias simple para gestionar las dependencias del juego. (Ejercicio 2)
@@ -711,7 +717,7 @@ public class Game {
 ```
 
 
-###Metricas de Codigo:
+### Metricas de Codigo:
 
 **Analisis de cobertura:**
 
