@@ -1,0 +1,18 @@
+package org.example;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] possibleWordsList = new String[]{"example", "campeon", "maraton", "futbol"};
+        int selectedWordIndex = 1;
+        int maximumAttempts = 5;
+        IWordSelector wordSelector = new WordSelector(possibleWordsList);
+        IHintGenerator hintGenerator = new HintGenerator(possibleWordsList[selectedWordIndex]);
+        Game game = new Game(wordSelector, hintGenerator, maximumAttempts);
+        game.start(1);
+        String[] allAttempts = new String[]{"torre", "mano", "arbol", "exam"};
+        for(String attempt :allAttempts) {
+            game.tryToGuessLetter(attempt);
+        }
+        System.out.println(game.winningAdvice());
+    }
+}

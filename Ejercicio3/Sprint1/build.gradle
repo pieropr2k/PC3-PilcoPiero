@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'jacoco' // Plugin de JaCoCo
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+    testImplementation 'org.jetbrains:annotations:24.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// jacoco
+jacoco {
+    toolVersion = "0.8.12" // Versión de JaCoCo (compatible con java 21)
+}
+
+jacocoTestReport {
+    dependsOn test // Ejecuta las pruebas antes de generar el informe
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+
+// ./gradlew pitest
+// ./gradlew jacocoTestReport
